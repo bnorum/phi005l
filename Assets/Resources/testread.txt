@@ -1,0 +1,9 @@
+//ignores comments like these or blank lines
+
+
+b 1.5 "this is my test."
+
+c 1 "this is our test"
+//test to see if itll read this line
+b 1.2 "lets check if i still have the same name"
+Boss 2 "in the text script, i have my full name written in. Let's see if that messes this up."
