@@ -47,7 +47,6 @@ public class TextParser : MonoBehaviour
                 //splits line by spaces, to get first 2 queries
                 string[] words = lines[x].Split(' ');
                 
-                //Debug.Log(words[0] + ": " + words[1] + " " + extractedString);
                 ScriptLine scriptLine = new ScriptLine(words[0], float.Parse(words[1]), extractedString);
                 readInText.Add(scriptLine);
             }

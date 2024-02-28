@@ -20,7 +20,6 @@ public class ScriptLine
         set { speaker = value; }
     }
 
-
     void ConvertName() {
         if (speaker == "b") {
             speaker = "Boss";
