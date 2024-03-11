@@ -57,6 +57,8 @@ public class ScriptReader : MonoBehaviour
         {
             if (scriptLines[i] is SkipTo)
             { 
+                decisionButton1.gameObject.SetActive(false);
+                decisionButton2.gameObject.SetActive(false);
                 SkipTo skipTo = (SkipTo)scriptLines[i];
                 i = (int)skipTo.JumpTo - 1; 
                 continue;
@@ -64,6 +66,8 @@ public class ScriptReader : MonoBehaviour
 
             else if (scriptLines[i] is DecisionLine)
             {
+                decisionButton1.gameObject.SetActive(true);
+                decisionButton2.gameObject.SetActive(true);
                 DecisionLine decisionLine = (DecisionLine)scriptLines[i];
                 WriteDecisionLine(decisionLine);
                 var waitForButton = new WaitForUIButtons(decisionButton1, decisionButton2);
@@ -79,6 +83,8 @@ public class ScriptReader : MonoBehaviour
             }
 
             else {
+                decisionButton1.gameObject.SetActive(false);
+                decisionButton2.gameObject.SetActive(false);
                 WriteLine(scriptLines[i]); 
                 yield return new WaitForSeconds(scriptLines[i].Delay);
             }
