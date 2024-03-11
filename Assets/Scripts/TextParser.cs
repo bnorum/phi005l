@@ -25,6 +25,31 @@ public class TextParser : MonoBehaviour
         }
         return result;
     }
+
+    public string GetStringInQuotesForDecision(string text)
+    {
+        string result = "";
+        int startIndex = text.IndexOf('"');
+        int nextIndex = text.IndexOf('"', text.IndexOf('"') + 1);
+        if (startIndex != -1 && nextIndex != -1 && startIndex < nextIndex)
+        {
+            result = text.Substring(startIndex + 1, nextIndex - startIndex - 1);
+        }
+        return result;
+    }
+
+    public string[] GetDecisions(string text)
+    {
+        string[] results = new string[2];
+        int startIndex = text.IndexOf('|');
+        int nextIndex = text.IndexOf('|', text.IndexOf('|') + 1);
+        if (startIndex != -1 && nextIndex != -1 && startIndex < nextIndex)
+        {
+            results[0] = text.Substring(startIndex + 1, nextIndex - startIndex - 1);
+            results[1] = text.Substring(nextIndex + 1);
+        }
+        return results;
+    }
     
     public ScriptLine[] ParseText(string text)
         {
@@ -41,14 +66,53 @@ public class TextParser : MonoBehaviour
                 {
                     continue;
                 }
-                
-                //reads stuff in quotes
-                string extractedString = GetStringInQuotes(lines[x]);
-                //splits line by spaces, to get first 2 queries
-                string[] words = lines[x].Split(' ');
-                
-                ScriptLine scriptLine = new ScriptLine(words[0], float.Parse(words[1]), extractedString);
-                readInText.Add(scriptLine);
+
+                if (lines[x].Trim().StartsWith("skip")) {
+                    string[] sWords = lines[x].Split(' ');
+                    SkipTo skipTo = new SkipTo(JumpTo:float.Parse(sWords[1]));
+                    readInText.Add(skipTo);
+                }
+
+                /*
+                decision line format:
+                    public DecisionLine(
+                        string Speaker = "Narrator",
+                        string Content = "This is a test.",
+                        float JumpTo1 = 0,
+                        float JumpTo2 = 0,
+                        string D1 = "Option 1",
+                        string D2 = "Option 2"
+                    )
+                */
+                // ddd speaker 2 26 "hello" | Option 1 | Option 2
+                else if (lines[x].Trim().StartsWith("ddd")) {
+                    string[] dWords = lines[x].Split(' ');
+                    string dExtractedString = GetStringInQuotesForDecision(lines[x]);
+                    DecisionLine decisionLine = new DecisionLine(
+                        dWords[1], //speaker
+                        dExtractedString, //content
+                        float.Parse(dWords[2]), //jump1
+                        float.Parse(dWords[3]), //jump2
+                        GetDecisions(lines[x])[0], //first decision 
+                        GetDecisions(lines[x])[1] //second decision
+                    );
+                    readInText.Add(decisionLine);
+                    continue;
+
+                }
+                else {
+                    //reads stuff in quotes
+                    string extractedString = GetStringInQuotes(lines[x]);
+                    //splits line by spaces, to get first 2 queries
+                    string[] words = lines[x].Split(' ');
+                    
+                    ScriptLine scriptLine = new ScriptLine(
+                        words[0], 
+                        float.Parse(words[1]), 
+                        extractedString
+                    );
+                    readInText.Add(scriptLine);
+                }
             }
             return readInText.ToArray();
         }

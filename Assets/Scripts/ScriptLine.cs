@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class ScriptLine
 {
-    private string content;
+    protected string content;
     public string Content {
         get { return content; }
         set { content = value; }
     }
-    private float delay;
+    protected float delay;
     public float Delay {
         get { return delay; }
         set { delay = value; }
     }
-    private string speaker;
+    protected string speaker;
     public string Speaker {
         get { return speaker; }
         set { speaker = value; }
     }
 
-    void ConvertName() {
+    protected void ConvertName() {
         if (speaker == "b") {
             speaker = "Boss";
         }

@@ -390,6 +390,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptReader: {fileID: 55659259}
+  decisionButton1: {fileID: 875235825}
+  decisionText1: {fileID: 1656339960}
+  decisionButton2: {fileID: 600180942}
+  decisionText2: {fileID: 1259462238}
 --- !u!114 &55659263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,7 +985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -192.50003, y: 35.539993}
+  m_AnchoredPosition: {x: -192.49997, y: 35.539993}
   m_SizeDelta: {x: -415, y: 41.350006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875235824
