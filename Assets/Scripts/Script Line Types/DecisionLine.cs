@@ -14,13 +14,13 @@ public class DecisionLine : ScriptLine
         get { return d2; }
         set { d2 = value; }
     }
-    protected float jumpTo1;
-    public float JumpTo1 {
+    protected string jumpTo1;
+    public string JumpTo1 {
         get { return jumpTo1; }
         set { jumpTo1 = value; }
     }
-    protected float jumpTo2;
-    public float JumpTo2 {
+    protected string jumpTo2;
+    public string JumpTo2 {
         get { return jumpTo2; }
         set { jumpTo2 = value; }
     }
@@ -28,8 +28,8 @@ public class DecisionLine : ScriptLine
     public DecisionLine(
             string Speaker = "Narrator",
             string Content = "This is a test.",
-            float JumpTo1 = 0,
-            float JumpTo2 = 0,
+            string JumpTo1 = "whiskey",
+            string JumpTo2 = "tango",
             string D1 = "Option 1",
             string D2 = "Option 2"
         )

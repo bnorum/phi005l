@@ -67,40 +67,36 @@ public class TextParser : MonoBehaviour
                     continue;
                 }
 
-                if (lines[x].Trim().StartsWith("skip")) {
+                //key foxtrot
+                if (lines[x].Trim().StartsWith("key"))
+                {
+                    string[] kWords = lines[x].Split(' ');
+                    Key key = new Key(ID: GetStringInQuotes(lines[x]));
+                    readInText.Add(key);
+                }
+
+                //skip foxtrot
+                else if (lines[x].Trim().StartsWith("skip")) {
                     string[] sWords = lines[x].Split(' ');
-                    SkipTo skipTo = new SkipTo(JumpTo:float.Parse(sWords[1]));
+                    SkipTo skipTo = new SkipTo(JumpTo:GetStringInQuotes(lines[x]));
                     readInText.Add(skipTo);
                 }
 
-                /*
-                decision line format:
-                    public DecisionLine(
-                        string Speaker = "Narrator",
-                        string Content = "This is a test.",
-                        float JumpTo1 = 0,
-                        float JumpTo2 = 0,
-                        string D1 = "Option 1",
-                        string D2 = "Option 2"
-                    )
-                */
-                // ddd speaker 2 26 "hello" | Option 1 | Option 2
+                
+                // ddd speaker whiskey tango "hello" | Option 1 | Option 2
                 else if (lines[x].Trim().StartsWith("ddd")) {
                     string[] dWords = lines[x].Split(' ');
                     string dExtractedString = GetStringInQuotesForDecision(lines[x]);
                     DecisionLine decisionLine = new DecisionLine(
                         dWords[1], //speaker
                         dExtractedString, //content
-                        float.Parse(dWords[2]), //jump1
-                        float.Parse(dWords[3]), //jump2
+                        dWords[2], //jump1
+                        dWords[3], //jump2
                         GetDecisions(lines[x])[0], //first decision 
                         GetDecisions(lines[x])[1] //second decision
                     );
                     readInText.Add(decisionLine);
-                    continue;
-
-                }
-                else {
+                } else {
                     //reads stuff in quotes
                     string extractedString = GetStringInQuotes(lines[x]);
                     //splits line by spaces, to get first 2 queries

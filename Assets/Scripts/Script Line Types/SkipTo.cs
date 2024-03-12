@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SkipTo : ScriptLine
 {
-    protected float jumpTo;
-    public float JumpTo {
+    protected string jumpTo;
+    public string JumpTo {
         get { return jumpTo; }
         set { jumpTo = value; }
     }
 
-    public SkipTo(float JumpTo = 0)
+    public SkipTo(string JumpTo = "0")
     {
         this.jumpTo = JumpTo;
     }

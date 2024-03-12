@@ -5,6 +5,7 @@ using TMPro;
 using System.Linq;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine.UI;
+using System;
 
 public class ScriptReader : MonoBehaviour
 {
@@ -51,60 +52,67 @@ public class ScriptReader : MonoBehaviour
         decisionText2.text = nextLine.D2;
     }
 
-    public IEnumerator PlayScriptLines(ScriptLine[] scriptLines)
-    {
-        for (int i = 0; i < scriptLines.Length; i++)
-        {
-            if (scriptLines[i] is SkipTo)
-            { 
+    public IEnumerator PlayScriptLines(ScriptLine[] scriptLines) {
+        for (int i = 0; i < scriptLines.Length; i++) {
+
+            if (scriptLines[i] is Key) continue;
+
+            else if (scriptLines[i] is SkipTo) { 
                 decisionButton1.gameObject.SetActive(false);
                 decisionButton2.gameObject.SetActive(false);
                 SkipTo skipTo = (SkipTo)scriptLines[i];
-                i = (int)skipTo.JumpTo - 1; 
+                i = findKeyIndex(scriptLines, skipTo.JumpTo);
                 continue;
             }
 
-            else if (scriptLines[i] is DecisionLine)
-            {
+            else if (scriptLines[i] is DecisionLine) {
                 decisionButton1.gameObject.SetActive(true);
                 decisionButton2.gameObject.SetActive(true);
+
                 DecisionLine decisionLine = (DecisionLine)scriptLines[i];
                 WriteDecisionLine(decisionLine);
+
                 var waitForButton = new WaitForUIButtons(decisionButton1, decisionButton2);
                 yield return waitForButton.Reset();
-                if (waitForButton.PressedButton == decisionButton1)
-                {
-                    i = (int)decisionLine.JumpTo1 - 1;
-                }
-                else
-                {
-                    i = (int)decisionLine.JumpTo2 - 1;
+
+                if (waitForButton.PressedButton == decisionButton1) {
+                    i = findKeyIndex(scriptLines, decisionLine.JumpTo1);
+                } else {
+                    i = findKeyIndex(scriptLines, decisionLine.JumpTo2);
                 }
             }
-
             else {
                 decisionButton1.gameObject.SetActive(false);
                 decisionButton2.gameObject.SetActive(false);
+                
                 WriteLine(scriptLines[i]); 
                 yield return new WaitForSeconds(scriptLines[i].Delay);
             }
-            
-            
-           
+
         } 
     }
 
-    private string RandomNameColor() {
-    string hexCode = "#";
-    string characters = "6789ABCDEF";
-    System.Random random = new System.Random();
-
-    for (int i = 0; i < 6; i++)
-    {
-        hexCode += characters[random.Next(characters.Length)];
+    private int findKeyIndex(ScriptLine[] scriptLines, string idToFind) {
+        for (int i = 0; i < scriptLines.Length; i++)
+        {
+            if (scriptLines[i] is Key && ((Key)scriptLines[i]).ID == idToFind)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
+    private string RandomNameColor() {
+        string hexCode = "#";
+        string characters = "6789ABCDEF";
+        System.Random random = new System.Random();
 
-    return hexCode;
+        for (int i = 0; i < 6; i++)
+        {
+            hexCode += characters[random.Next(characters.Length)];
+        }
+
+        return hexCode;
     }
 
 }

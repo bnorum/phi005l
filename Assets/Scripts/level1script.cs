@@ -26,7 +26,7 @@ public class level1script : MonoBehaviour
     */
     void Start()
     {
-        ScriptLine[] script = parser.ParseText(parser.ReadString("Assets/Resources/testread.txt"));
+        ScriptLine[] script = parser.ParseText(parser.ReadString("Assets/Resources/testread.bcn"));
         StartCoroutine(reader.PlayScriptLines(script));
     }
 }
