@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class ScriptLine
 {
+    private Dictionary<string, string> speakerShorten = new Dictionary<string,string>()
+    {
+        {"N", characterDeets.pName},
+        {"m", "mitchell.ae86"},
+        {"z", "Zanzibar"},
+        {"t", "TOTALDESTRUCTION10000"},
+        {"j", "Josh"},
+        {"p", "pioneer"}
+    };
+
     protected string content;
     public string Content {
         get { return content; }
@@ -21,13 +31,10 @@ public class ScriptLine
     }
 
     protected void ConvertName() {
-        if (speaker == "b") {
-            speaker = "Boss";
+        if (speakerShorten.ContainsKey(speaker)) {
+            speaker = speakerShorten[speaker];
         }
-        if (speaker == "c") {
-            speaker = "Chuckles";
-        }
-
+      
     }
     public ScriptLine(string Speaker = "Narrator", float Delay = 1,string Content = "This is a test.")
     {

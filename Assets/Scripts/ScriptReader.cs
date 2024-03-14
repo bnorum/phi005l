@@ -17,9 +17,13 @@ public class ScriptReader : MonoBehaviour
     private string[] readableText = new string[17];
     private Dictionary<string, string> speakerColors = new Dictionary<string,string>()
         {
-            {"Narrator", "#000fff"},
-            {"Player", "#00ff00"},
-            {"NPC", "#ff0000"}
+            {characterDeets.pName, "#000fff"},
+            {"mitchell.ae86", "#30332E"},
+            {"Zanzibar", "#403D58"},
+            {"TOTALDESTRUCTION10000", "#F4442E"},
+            {"Josh", "#020122"},
+            {"pioneer", "#053B06"}
+
         };
     
     public void WriteLine(ScriptLine nextLine) {
@@ -59,6 +63,14 @@ public class ScriptReader : MonoBehaviour
         readableText[0] = "<color=#8e918f>" + title.Title+ "</color>";
         scriptReader.text = string.Join("<br>", readableText.Reverse());
     }
+    public void WriteConsole(ConsoleLine title) {
+        for (int i = readableText.Length - 1; i > 0; i--)
+        {
+            readableText[i] = readableText[i - 1];
+        }
+        readableText[0] = "<color=#8e91FF>" + title.Title+ "</color>";
+        scriptReader.text = string.Join("<br>", readableText.Reverse());
+    }
     public void DecisionButtons(bool state) {
         decisionButton1.gameObject.SetActive(state);
         decisionButton2.gameObject.SetActive(state);
@@ -80,6 +92,14 @@ public class ScriptReader : MonoBehaviour
                 TitleLine titleLine = (TitleLine)scriptLines[i];
                 WriteTitle(titleLine);
                 yield return new WaitForSeconds(2.5f);
+                readableText = new string[17];
+                scriptReader.text = string.Join("<br>", readableText.Reverse()); 
+            }
+            else if (scriptLines[i] is ConsoleLine) {
+                DecisionButtons(false);
+                ConsoleLine consoleLine = (ConsoleLine)scriptLines[i];
+                WriteConsole(consoleLine);
+                yield return new WaitForSeconds(2.5f);
             }
             else if (scriptLines[i] is DecisionLine) {
                 DecisionButtons(true);
@@ -92,8 +112,14 @@ public class ScriptReader : MonoBehaviour
 
                 if (waitForButton.PressedButton == decisionButton1) {
                     i = findKeyIndex(scriptLines, decisionLine.JumpTo1);
+                    ScriptLine playerChoice = new ScriptLine(Speaker: characterDeets.pName, Content: decisionLine.D1);
+                    WriteLine(playerChoice);
+                    yield return new WaitForSeconds(playerChoice.Delay);
                 } else {
                     i = findKeyIndex(scriptLines, decisionLine.JumpTo2);
+                    ScriptLine playerChoice = new ScriptLine(Speaker: characterDeets.pName, Content: decisionLine.D2);
+                    WriteLine(playerChoice);
+                    yield return new WaitForSeconds(playerChoice.Delay);
                 }
             }
             else {

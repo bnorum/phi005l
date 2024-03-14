@@ -5,12 +5,19 @@ using System.IO;
 
 public class TextParser : MonoBehaviour
 {
+    protected string playerName = characterDeets.pName;
+
+    public string ReplaceDota2WithPlayerName(string script)
+    {
+        return script.Replace("dota2", playerName);
+    }
 
     public string ReadString(string path)
     {
         //Read the text from directly from the test.txt file
         StreamReader reader = new StreamReader(path); 
         string saveit = reader.ReadToEnd();
+        saveit = ReplaceDota2WithPlayerName(saveit);
         reader.Close();
         return saveit;
     }
@@ -86,6 +93,12 @@ public class TextParser : MonoBehaviour
                     string title = GetStringInQuotes(lines[x]);
                     TitleLine titleLine = new TitleLine(Title: title);
                     readInText.Add(titleLine);
+                }
+                // console "x joined chat"
+                else if (lines[x].Trim().StartsWith("console")) {
+                    string console = GetStringInQuotes(lines[x]);
+                    ConsoleLine consoleLine = new ConsoleLine(Title: console);
+                    readInText.Add(consoleLine);
                 }
 
                 

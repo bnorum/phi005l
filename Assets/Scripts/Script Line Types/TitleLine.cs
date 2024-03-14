@@ -9,9 +9,15 @@ public class TitleLine : ScriptLine
         get { return title; }
         set { title = value; }
     }
+    protected bool clear;
+    public bool Clear {
+        get { return clear; }
+        set { Clear = value; }
+    }
 
-    public TitleLine(string Title = "Title")
+    public TitleLine(string Title = "Title", bool Clear = true)
     {
         this.title = Title;
+        this.clear = Clear;
     }
 }
