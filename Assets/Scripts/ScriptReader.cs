@@ -14,7 +14,7 @@ public class ScriptReader : MonoBehaviour
     public TextMeshProUGUI decisionText1;
     public Button decisionButton2;
     public TextMeshProUGUI decisionText2;
-    private string[] readableText = new string[18];
+    private string[] readableText = new string[17];
     private Dictionary<string, string> speakerColors = new Dictionary<string,string>()
         {
             {"Narrator", "#000fff"},
@@ -51,6 +51,18 @@ public class ScriptReader : MonoBehaviour
         decisionText1.text = nextLine.D1;
         decisionText2.text = nextLine.D2;
     }
+    public void WriteTitle(TitleLine title) {
+        for (int i = readableText.Length - 1; i > 0; i--)
+        {
+            readableText[i] = readableText[i - 1];
+        }
+        readableText[0] = "<color=#8e918f>" + title.Title+ "</color>";
+        scriptReader.text = string.Join("<br>", readableText.Reverse());
+    }
+    public void DecisionButtons(bool state) {
+        decisionButton1.gameObject.SetActive(state);
+        decisionButton2.gameObject.SetActive(state);
+    }
 
     public IEnumerator PlayScriptLines(ScriptLine[] scriptLines) {
         for (int i = 0; i < scriptLines.Length; i++) {
@@ -58,16 +70,19 @@ public class ScriptReader : MonoBehaviour
             if (scriptLines[i] is Key) continue;
 
             else if (scriptLines[i] is SkipTo) { 
-                decisionButton1.gameObject.SetActive(false);
-                decisionButton2.gameObject.SetActive(false);
+                DecisionButtons(false);
                 SkipTo skipTo = (SkipTo)scriptLines[i];
                 i = findKeyIndex(scriptLines, skipTo.JumpTo);
                 continue;
             }
-
+            else if (scriptLines[i] is TitleLine) {
+                DecisionButtons(false);
+                TitleLine titleLine = (TitleLine)scriptLines[i];
+                WriteTitle(titleLine);
+                yield return new WaitForSeconds(2.5f);
+            }
             else if (scriptLines[i] is DecisionLine) {
-                decisionButton1.gameObject.SetActive(true);
-                decisionButton2.gameObject.SetActive(true);
+                DecisionButtons(true);
 
                 DecisionLine decisionLine = (DecisionLine)scriptLines[i];
                 WriteDecisionLine(decisionLine);
@@ -82,9 +97,7 @@ public class ScriptReader : MonoBehaviour
                 }
             }
             else {
-                decisionButton1.gameObject.SetActive(false);
-                decisionButton2.gameObject.SetActive(false);
-                
+                DecisionButtons(false);
                 WriteLine(scriptLines[i]); 
                 yield return new WaitForSeconds(scriptLines[i].Delay);
             }

@@ -81,6 +81,12 @@ public class TextParser : MonoBehaviour
                     SkipTo skipTo = new SkipTo(JumpTo:GetStringInQuotes(lines[x]));
                     readInText.Add(skipTo);
                 }
+                //title "chapter 1"
+                else if (lines[x].Trim().StartsWith("title")) {
+                    string title = GetStringInQuotes(lines[x]);
+                    TitleLine titleLine = new TitleLine(Title: title);
+                    readInText.Add(titleLine);
+                }
 
                 
                 // ddd speaker whiskey tango "hello" | Option 1 | Option 2
