@@ -20,7 +20,7 @@
 
 
 title "chapter 1"
-title "love is dead"
+title "love aint exactly dead for the most part"
 
 console "dota2 has joined the chat"
 t 1.5 "You know, Mitchell"
@@ -45,5 +45,49 @@ t 1.5 "Hi dota2!"
 m 1.5 "Hey"
 
 key "hellosorry"
+console "zanzibar has joined the chat"
 z 1 "wow new guy"
 z 2 "thats nuts"
+z 1 "new guy do you listen to steely dan"
+m 1.5 "Oh my god that's really all there is with you huh."
+ddd n steelyyes steelyno "Um" Yes | What's Steely Dan
+
+key "steelyyes"
+z 3 "thats the mark of a winner"
+z 1.5 "a good man"
+z 4 "or woman or whatever"
+z 1.5 "fuck"
+z 1.5 "a good person"
+t 3 "When I was young I used to listen to Steely Dan, when we we're out on patrols."
+t 3 "There wasn't a lot of tickets given out those nights."
+z 1 "boring"
+z 3 "boooooooring"
+z 3 "boring"
+z 2 "i love you teedee but i cant get over the cop thing"
+z 1.5 "or the old fart thing"
+m 1.5 "He's not that old"
+m 4 "Just triple my age LOL old man."
+m 1.5 "JK John we love you even if you're that old."
+t 3 "Guys,"
+t 1 "Start working on your Roth IRA."
+z 2 "old old old old old"
+t 3 "And then we can have this conversation."
+t 1.5 "But for now let's get back to dota2 who loves Steely Dan."
+skip "steelyafter"
+
+key "steelyno"
+
+skip "steelyafter"
+
+key "steelyafter"
+m 1.5 "Right"
+m 2 "So what else are you about dota2?"
+m 2 "we were talking about love, before you joined"
+z 1 "wow just you two"
+z 1.5 "?"
+z 2 "sounds fascinating but i think ive got a good grip on love already"
+console "zanzibar has left the chat"
+m 1.5 "he sucks"
+console "zanzibar has joined the chat"
+z 2 "just kidding im interested in that kinda thingl
+
