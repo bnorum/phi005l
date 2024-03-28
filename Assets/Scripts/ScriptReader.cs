@@ -14,12 +14,12 @@ public class ScriptReader : MonoBehaviour
     public TextMeshProUGUI decisionText1;
     public Button decisionButton2;
     public TextMeshProUGUI decisionText2;
-    private string[] readableText = new string[17];
+    private string[] readableText = new string[50];
     private Dictionary<string, string> speakerColors = new Dictionary<string,string>()
         {
             {characterDeets.pName, "#000fff"},
             {"mitchell.ae86", "#30332E"},
-            {"Zanzibar", "#403D58"},
+            {"Zanzibar", "#42f57b"},
             {"TOTALDESTRUCTION10000", "#F4442E"},
             {"Josh", "#020122"},
             {"pioneer", "#053B06"}
@@ -92,8 +92,7 @@ public class ScriptReader : MonoBehaviour
                 TitleLine titleLine = (TitleLine)scriptLines[i];
                 WriteTitle(titleLine);
                 yield return new WaitForSeconds(2.5f);
-                readableText = new string[17];
-                scriptReader.text = string.Join("<br>", readableText.Reverse()); 
+                readableText = new string[50];
             }
             else if (scriptLines[i] is ConsoleLine) {
                 DecisionButtons(false);
