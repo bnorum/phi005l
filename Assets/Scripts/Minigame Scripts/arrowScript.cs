@@ -8,7 +8,7 @@ public class arrowScript : MonoBehaviour
     GameObject player;
     Rigidbody2D rb;
     public float speed = 4;
-    int zone = 5;
+    public int zone = 5;
     // Start is called before the first frame update
     void Start()
     {
