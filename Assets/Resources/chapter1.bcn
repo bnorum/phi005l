@@ -111,16 +111,5 @@ skip "steelyafter"
 
 key "steelyafter"
 m 1.5 "Right"
-m 2 "So what else are you about dota2?"
-m 2 "we were talking about something, before you joined"
-z 1 "wow just you two"
-z 1.5 "?"
-z 2 "sounds fascinating but i think ive got a good grip on something already"
-console "zanzibar has left the chat"
-m 1.5 "he sucks"
-console "zanzibar has joined the chat"
-z 2 "just kidding im interested in that kinda thing"
-m 3 "but to answer your question"
-m 2 "It was me him and Pioneer"
-m 3 "She went afk I think"
+
 

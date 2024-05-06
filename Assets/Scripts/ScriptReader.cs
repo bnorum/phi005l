@@ -15,6 +15,8 @@ public class ScriptReader : MonoBehaviour
     public Button decisionButton2;
     public TextMeshProUGUI decisionText2;
     private string[] readableText = new string[50];
+
+    public int currentIndex = 0;
     private Dictionary<string, string> speakerColors = new Dictionary<string,string>()
         {
             {characterDeets.pName, "#000fff"},
@@ -77,8 +79,9 @@ public class ScriptReader : MonoBehaviour
     }
 
     public IEnumerator PlayScriptLines(ScriptLine[] scriptLines) {
-        for (int i = 0; i < scriptLines.Length; i++) {
+        for (int i = PlayerPrefs.GetInt("SavedLine"); i < scriptLines.Length; i++) {
 
+            currentIndex = i;
             if (scriptLines[i] is Key) continue;
 
             else if (scriptLines[i] is SkipTo) { 
