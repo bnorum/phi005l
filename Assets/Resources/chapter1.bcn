@@ -20,22 +20,21 @@
 
 
 title "chapter 1"
-title "love aint exactly dead for the most part"
+title "coldrage dagger"
 
 console "dota2 has joined the chat"
 t 1.5 "You know, Mitchell"
-t 2 "I'm a grown man"
-t 1.5 "and I don't really know how to fil taxes,"
+t 2 "You're very lucky"
+t 3 "You get rare drops AND you don't have to fil taxes."
 t 1.5 "*file"
-t 2.5 "but it's amazing how bad you are at it."
 m 1.5 "dude"
-m 1.5 "Dont embarass me right now"
+m 1.5 "Im just lucky"
 m 1.3 "There's a new guy"
-ddd m sorry hello "and I don't want him seeing me like this" | Sorry | Hello
+ddd m sorry hello "and I don't want him to see me gloat" | Sorry | Hello
 
 key "sorry"
-t 4 "No it's cool dota2 don't worry about it."
-t 1.5 "Mitchell just can't file his taxes."
+t 4 "No, it's cool dota2 don't worry about it."
+t 1.5 "Mitchell is just a cheater."
 m 1.5 "I hate you"
 skip "hellosorry"
 
@@ -111,5 +110,37 @@ skip "steelyafter"
 
 key "steelyafter"
 m 1.5 "Right"
+z 4 "hey mitch i heard about your rare drop"
+z 1.5 "pretty cool"
+z 2 "pretty narly"
+z 3 "knarly"
+t 1.5 "Gnarly"
+z 1.5 "dont care"
+m 3 "the Coldrage Dagger?"
+m 2 "Yeah it's pretty cool Im a lucky guy"
+z 4 "no girlfriend though"
+m 2 "Shut up LOL"
+z 3 "you have us though"
+z 3 "and you have the coldrage dagger"
+z 1.5 "low drop chance god"
+console "pioneer has joined the chat"
+z 2 "hello sugar"
+p 4 "COLDRAGE DAGGER MITCHELL?"
+p 3 "hi zanzibar? wtf"
+m 3 "I get one coldrage Dagger off a raid and suddenly everyone wants to be friends"
+m 1.5 "You know the droprate is like"
+m 2 "20 percent"
+t 5 "It's the fact that no one else grabbed it first."
+t 3 "We're proud Mitchell. You're really making the guild your bitch."
+z 3 "im not proud i just want it lol"
+z 2 "speak for yourself john"
+p 3 "When I got my first job I always wanted to use real money to trade for a coldrage dagger"
+p 3 "I gave up preeeetty quick though."
+p 3 "just thought that the frost was pretty cool."
+z 1.5 "hahaha frost cool thats very good"
+t 3 "How is everyone doing tonight? I didn't get the chance to ask."
+ddd z doinggood doingbad "he always asks this" | I'm doing good | I want to be killed
 
+key doinggood
 
+key doingbad
