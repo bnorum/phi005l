@@ -9,4 +9,9 @@ public class Debug : MonoBehaviour
         else Time.timeScale = 5;
 
     }
+
+    public void QuitGame() {
+        UnityEngine.Debug.Log("Quit Game");
+        Application.Quit();
+    }
 }

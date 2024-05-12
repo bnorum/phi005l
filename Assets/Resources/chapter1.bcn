@@ -1,15 +1,3 @@
-//welcome to the official braden norum script file!
-//title "chapter 1"
-//b 1.5 "You will now be presented with 2 options"
-//ddd b rock monkey "Do You want to hear about rocks or monkeys?" | Rocks | monkeys
-//key "monkey"
-//b 1.5 "Monkeys are known for their cleverness, often using tools and displaying complex social behaviors."
-//skip "after"
-//key "rock"
-//b 1.5 "Rocks are solid mineral material found naturally on Earth's surface."
-//key "after"
-//b 1.5 "and thats a fact, jack"
-
 //characters
 // {"P", "dota2"},
 // {"m", "mitchell.ae86"},
@@ -141,6 +129,34 @@ z 1.5 "hahaha frost cool thats very good"
 t 3 "How is everyone doing tonight? I didn't get the chance to ask."
 ddd z doinggood doingbad "he always asks this" | I'm doing good | I want to be killed
 
-key doinggood
+key "doinggood"
+p 3 "THERE'S THE New GUY??"
+p 1 "Holy"
+p 5 "Shit"
+p 3 "I thought we were doomed to be alone in this chat with zanzibar forever"
+p 3 "But im doing good"
+t 2 "They've been here for 5 minutes and have already gotten the Steely Dan speech."
+p 1 "Oh god"
+z 4 "yeah and it was SICK just like every other time"
+m 2 "Have you ever noticed that every time you ask someone if they listen to Steely Dan they don't come back the next day?"
+m 3 "Or is that just something I notice"
+p 2 "You have a point"
 
-key doingbad
+skip "doingafter"
+
+key "doingbad"
+z 2 "thats badass"
+m .5 "are you okay what"
+p 4 "WOw there's a new guy"
+ddd t doingreallybad doingkindabad "Well what's going on?" | My boyfriend broke up with me | I was running and slipped on a banana
+
+
+key "doingreallybad"
+
+skip "doingafter"
+
+key "doingkindabad"
+
+skip "doingafter"
+
+key "doingafter"
