@@ -16,7 +16,7 @@ public class SaveManager : MonoBehaviour
     }
 
     public void ContinueGame() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public int LoadGame() {

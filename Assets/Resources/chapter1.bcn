@@ -7,22 +7,79 @@
 // {"p", "pioneer"}
 
 
-title "chapter 1"
+
+title "chapter 0"
+title "a couple of things"
+
+d 1.5 "hey im the uh"
+d 2 "moderator of this chat and i gotta tell you a few things"
+d 4 "well first im gonna go through the idea of this whole thing then ill give you some tips on controls"
+d 4 "So the idea behind this was to display a group with a sense of community"
+d 3 "something about 'love is inclusion' or 'love is hanging around with your buddies and talking'"
+d 2 "hopefully you find some love for these fake people"
+d 3 "i recommend you play more than once to explore some of the dialogue options"
+d 4 "otherwise itll take maybe ~10 minutes but theres like double that in content here."
+d 3 "any way about the controls"
+
+key "ctrl2"
+d 3 "in the top right of the screen you can find some buttons"
+d 4 "the 2 arrows is to speed up your annoying new friends"
+d 4 "the arrow into the thing is to save the game"
+d 4 "i assume you can guess at what the giant red x does"
+d 2 "it closes the game but i was too lazy to make a confirm button so it immediately closes the game"
+d 2 "dont forget to save before that"
+d 5 "also: this window is scrollable and draggable,  so lets try it out"
+d 2 "im gonna scream scroll up until you can see this"
+d 0.1 "GRAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 3 "AAA"
+d 3 "pretty cool right"
+ddd d ctrl1 ctrl2 "Got it down?" | Yes | Repeatplease
+
+key "ctrl1"
+d 2 "one more thing"
+d 2 "I recommend you listen to music while playing"
+d 3 "im no composer. listen to parliament or the dramatics or aphex twin or something idk"
+d 5 "but thats it lemme get you into the chat now. bye bye"
+skip "startof1"
+
+
+key "startof1"
+title " "
+title "chapter 1?"
 title "coldrage dagger"
 
+console "9PM, Thursday"
 console "dota2 has joined the chat"
+m 3 "Just took a horrible nightmarish shit"
 t 1.5 "You know, Mitchell"
 t 2 "You're very lucky"
-t 3 "You get rare drops AND you don't have to fil taxes."
+t 3 "Horrible bowel movements, you get rare drops AND you don't have to fil taxes."
 t 1.5 "*file"
 m 1.5 "dude"
-m 1.5 "Im just lucky"
 m 1.3 "There's a new guy"
-ddd m sorry hello "and I don't want him to see me gloat" | Sorry | Hello
+ddd m sorry hello "and I just totally talked about shitting" | Sorry | Hello
 
 key "sorry"
 t 4 "No, it's cool dota2 don't worry about it."
-t 1.5 "Mitchell is just a cheater."
+t 1.5 "Mitchell is just gross."
 m 1.5 "I hate you"
 skip "hellosorry"
 
@@ -30,6 +87,7 @@ skip "hellosorry"
 key "hello"
 t 1.5 "Hi dota2!"
 m 1.5 "Hey"
+skip "hellosorry"
 
 key "hellosorry"
 console "zanzibar has joined the chat"
@@ -141,22 +199,111 @@ z 4 "yeah and it was SICK just like every other time"
 m 2 "Have you ever noticed that every time you ask someone if they listen to Steely Dan they don't come back the next day?"
 m 3 "Or is that just something I notice"
 p 2 "You have a point"
-
-skip "doingafter"
+z 3 "im just scoping out the field tbh. making a community of steely dan fans"
+z 3 "steely fans"
+skip "endof1"
 
 key "doingbad"
 z 2 "thats badass"
 m .5 "are you okay what"
 p 4 "WOw there's a new guy"
-ddd t doingreallybad doingkindabad "Well what's going on?" | My boyfriend broke up with me | I was running and slipped on a banana
+ddd t doingreallybad doingkindabad "Well what's going on?" | My boyfriend broke up with me | I-95 is super backed up
 
 
 key "doingreallybad"
+z 2 "good"
+z 4 "more time for gaming"
+dota2 1 "I don't do that"
+z 3 "WHat"
+z 2 "you know this is a world of warcraft guild chat right how did you even find this"
+m 2 "Thats strange."
+m 2 "I dont really care though I'm liking them so far"
+m 2 "They didn't leave after I said I was taking a horrible shit"
+z 4 "haha you said what"
+m 1 "I didn't see them join"
+t 3 "It was a moment of vulnerability"
+t 2 "What happened with the boyfriend"
+t 3 "Tricky business? Cheating?"
+ddd p brokeup1 brokeup2 "We're here for you new guy we just met" | It just didn't work | He found someone else
 
-skip "doingafter"
+key "brokeup1"
+z 2 "normally id be all 'i dont care pick up a football' but im geniunely curious"
+dota2 3 "Don't really want to talk about it right now"
+dota2 3 "Maybe tomorrow."
+skip "endof1"
+
+
+key "brokeup2"
+t 2 "Woah"
+t 2 "I'm sorry man."
+z 3 "thats really fucked up holy shit"
+z 2 "i understand why youre not very talkative"
+m 4 "You dont have to say anything more about it, we understand"
+z 2 "unless you want to in which case go nuts"
+dota2 3 "Don't really want to talk about it right now"
+dota2 3 "Maybe later."
+
+skip "endof1"
 
 key "doingkindabad"
+z 3 "thats horrible"
+z 2 "what is i-95"
+m 3 "I-95 is a highway in the eastern US"
+p 2 "Mitchell is providing exposition for the story here. Very cool Mitchell"
+m 3 "You know it's the sixth longest highway in the US? I just find that interesting"
+t 2 "Mitchell, have you thought about picking up a hobby?"
+p 3 "Anyway the highway being backed up really fucked you up huh."
+m 2 "I think it's enough to make anyone cry"
+dota2 2 "I'm not really worried about. Just annoying"
+skip "endof1"
 
-skip "doingafter"
 
-key "doingafter"
+
+
+key "endof1"
+dota2 3 "I gotta get off for tonight"
+dota2 3 "I have work tomorrow"
+t 3 "A job? Good for you."
+t 2 "Mitchell.ae86? Maybe take notes?"
+console "dota has left the chat"
+skip "startof2"
+
+
+//chapter 1 end
+
+
+
+
+
+key "startof2"
+title " "
+title "chapter 2"
+title "grown adults discussing their futures"
+console "7PM, The Next Day"
+console "dota has joined the chat"
+z 2 "so anyway yeah"
+z 3 "my cigarettes crowd the surrounding streets like little sentrys covered in my saliva"
+z 2 "they do me bidding"
+z 3 "hi new guy you came back"
+p 2 "Thats fascinating z you have such a unique mind"
+p 2 "dota2 you think there's anything going on in his head?"
+ddd p zanzweird1 zanzweird2 "Some kind of tumor? or just general weirdness?" | Biological | He's weird.
+
+key "zanzweird1"
+
+
+skip "zanzweirdafter"
+
+
+key "zanzweird2"
+
+skip "zanzweirdafter"
+
+
+
+title "the end"
+title "for now"
+console "one day I will continue this game"
+console "and it'll be so much more than this"
+console "i promise"
+

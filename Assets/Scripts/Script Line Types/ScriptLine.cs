@@ -11,7 +11,8 @@ public class ScriptLine
         {"z", "Zanzibar"},
         {"t", "TOTALDESTRUCTION10000"},
         {"j", "Josh"},
-        {"p", "pioneer"}
+        {"p", "pioneer"},
+        {"d", "developer"}
     };
 
     protected string content;

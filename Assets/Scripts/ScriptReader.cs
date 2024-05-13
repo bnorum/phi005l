@@ -15,6 +15,7 @@ public class ScriptReader : MonoBehaviour
     public Button decisionButton2;
     public TextMeshProUGUI decisionText2;
     private string[] readableText = new string[50];
+    public AudioSource aSource;
 
     public int currentIndex = 0;
     private Dictionary<string, string> speakerColors = new Dictionary<string,string>()
@@ -24,7 +25,8 @@ public class ScriptReader : MonoBehaviour
             {"Zanzibar", "#42f57b"},
             {"TOTALDESTRUCTION10000", "#F4442E"},
             {"Josh", "#020122"},
-            {"pioneer", "#053B06"}
+            {"pioneer", "#023Bf0"},
+            {"developer", "#000fff"}
 
         };
     
@@ -80,7 +82,10 @@ public class ScriptReader : MonoBehaviour
 
     public IEnumerator PlayScriptLines(ScriptLine[] scriptLines) {
         for (int i = PlayerPrefs.GetInt("SavedLine"); i < scriptLines.Length; i++) {
+            aSource.volume = UnityEngine.Random.Range(0.5f, 1.0f);
 
+            aSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+            aSource.Play();
             currentIndex = i;
             if (scriptLines[i] is Key) continue;
 
