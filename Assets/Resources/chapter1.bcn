@@ -242,7 +242,6 @@ m 4 "You dont have to say anything more about it, we understand"
 z 2 "unless you want to in which case go nuts"
 dota2 3 "Don't really want to talk about it right now"
 dota2 3 "Maybe later."
-
 skip "endof1"
 
 key "doingkindabad"
@@ -290,6 +289,7 @@ p 2 "dota2 you think there's anything going on in his head?"
 ddd p zanzweird1 zanzweird2 "Some kind of tumor? or just general weirdness?" | Biological | He's weird.
 
 key "zanzweird1"
+z 3 "yea i was pretty much born like this"
 
 
 skip "zanzweirdafter"
@@ -303,7 +303,8 @@ skip "zanzweirdafter"
 
 title "the end"
 title "for now"
-console "one day I will continue this game"
+console "Thanks for playing,"
+console "in time I will continue this game"
 console "and it'll be so much more than this"
 console "i promise"
 
