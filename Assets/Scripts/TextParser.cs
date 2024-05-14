@@ -15,7 +15,8 @@ public class TextParser : MonoBehaviour
     public string ReadString(string path)
     {
         //Read the text from directly from the test.txt file
-        StreamReader reader = new StreamReader(path); 
+        string fullPath = Path.Combine(Application.streamingAssetsPath, path);
+        StreamReader reader = new StreamReader(fullPath);
         string saveit = reader.ReadToEnd();
         saveit = ReplaceDota2WithPlayerName(saveit);
         reader.Close();

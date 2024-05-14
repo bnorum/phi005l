@@ -8,7 +8,7 @@ public class level1script : MonoBehaviour
     public ScriptReader reader;
     void Start()
     {
-        ScriptLine[] script = parser.ParseText(parser.ReadString("Assets/Resources/chapter1.bcn"));
+        ScriptLine[] script = parser.ParseText(parser.ReadString("chapter1.bcn"));
         StartCoroutine(reader.PlayScriptLines(script));
     }
 }
