@@ -14,13 +14,24 @@ public class TextParser : MonoBehaviour
 
     public string ReadString(string path)
     {
-        //Read the text from directly from the test.txt file
-        string fullPath = Path.Combine(Application.streamingAssetsPath, path);
-        StreamReader reader = new StreamReader(fullPath);
-        string saveit = reader.ReadToEnd();
-        saveit = ReplaceDota2WithPlayerName(saveit);
-        reader.Close();
-        return saveit;
+        // Check if the file exists at the specified location
+        if (File.Exists(path))
+        {
+            // Read the text from the file
+            StreamReader reader = new StreamReader(path);
+            string saveit = reader.ReadToEnd();
+            saveit = ReplaceDota2WithPlayerName(saveit);
+            reader.Close();
+            return saveit;
+        }
+        else
+        {
+            // Read the text from the file in the assets/resources folder
+            StreamReader reader = new StreamReader("Assets/Resources/" + path);
+            string saveit = reader.ReadToEnd();
+            saveit = ReplaceDota2WithPlayerName(saveit);
+            return saveit;
+        }
     }
     public string GetStringInQuotes(string text)
     {
