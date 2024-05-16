@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class healthManager : MonoBehaviour
@@ -29,5 +30,10 @@ public class healthManager : MonoBehaviour
     {
         MaxHealth = 10;
         CurrentHealth = MaxHealth;
+    }
+    void Update()
+    {
+        TextMeshProUGUI healthText = GameObject.Find("healthText").GetComponent<TextMeshProUGUI>();
+        healthText.text = "Health: " + CurrentHealth;
     }
 }
