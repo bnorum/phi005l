@@ -4,8 +4,8 @@ using Newtonsoft.Json;
 using UnityEngine;
 
 public class BeatDelayAction {
-    public int beatDelay;
-    public BeatDelayAction(int beatDelay) {
+    public float beatDelay;
+    public BeatDelayAction(float beatDelay) {
         this.beatDelay = beatDelay;
     }
 
@@ -14,7 +14,7 @@ public class Arrow : BeatDelayAction
 {
     public int zone;
     public float beatstohit;
-    public Arrow(int zone, float beatstohit, int beatDelay) : base(beatDelay)
+    public Arrow(int zone, float beatstohit, float beatDelay) : base(beatDelay)
     {
         this.zone = zone;
         this.beatstohit = beatstohit;

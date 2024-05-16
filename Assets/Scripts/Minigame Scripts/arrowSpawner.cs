@@ -13,8 +13,8 @@ public class arrowSpawner : MonoBehaviour
     public BeatDelayAction[] beatDelayActions;
     public ActionParser actionParser;
     public TextMeshProUGUI actionText;
-    int currentbeat = 0;
-    int savedbeat = 0;
+    float currentbeat = 0;
+    float savedbeat = 0;
     int delayActionIndex = 0;
     // Start is called before the first frame update
     void Start()
@@ -39,7 +39,7 @@ public class arrowSpawner : MonoBehaviour
 
         //UnityEngine.Debug.Log(currentbeat);
         
-        if (savedbeat == currentbeat && delayActionIndex < beatDelayActions.Length)
+        if (savedbeat < currentbeat && delayActionIndex < beatDelayActions.Length)
         {
             
             if (beatDelayActions[delayActionIndex].GetType() == typeof(Arrow))

@@ -43,7 +43,7 @@ public class ActionParser : MonoBehaviour
         foreach (string line in lines) {
             string[] parts = line.Split(' ');
             if (parts[0] == "a") {
-                BeatDelayAction action = new Arrow(zone: int.Parse(parts[3]), beatstohit: float.Parse(parts[2]), beatDelay: int.Parse(parts[1]));
+                BeatDelayAction action = new Arrow(zone: int.Parse(parts[3]), beatstohit: float.Parse(parts[2]), beatDelay: float.Parse(parts[1]));
                 actions.Add(action);
             }
             if (parts[0] == "t") {
