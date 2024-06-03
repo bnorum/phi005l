@@ -59,6 +59,13 @@ public class Conductor : MonoBehaviour
         musicSource.Play();
     }
     void Update() {
+        
+        if (GameObject.Find("BadassBar").GetComponent<BadassManager>().stopped) {
+            musicSource.Pause();
+        } 
+        else if (!musicSource.isPlaying) {
+            musicSource.UnPause();
+        }
         //determine how many seconds since the song started
         songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
 
@@ -70,6 +77,8 @@ public class Conductor : MonoBehaviour
         loopPositionInBeats = songPositionInBeats - completedLoops * beatsPerLoop;
 
         loopPositionInAnalog = loopPositionInBeats / beatsPerLoop;
+
+        
     }
 
     

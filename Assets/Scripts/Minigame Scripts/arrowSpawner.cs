@@ -10,54 +10,66 @@ public class arrowSpawner : MonoBehaviour
 {
     public GameObject arrowPrefab;
     public Transform[] zones = new Transform[5];
+    public GameObject[] warning = new GameObject[5];
     public BeatDelayAction[] beatDelayActions;
     public ActionParser actionParser;
-    public TextMeshProUGUI actionText;
+    //public TextMeshProUGUI actionText;
+    public string textName;
     float currentbeat = 0;
     float savedbeat = 0;
-    int delayActionIndex = 0;
+    [SerializeField] int delayActionIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
-        actionText = GameObject.Find("ActionText").GetComponent<TextMeshProUGUI>();
+        //actionText = GameObject.Find("ActionText").GetComponent<TextMeshProUGUI>();
         actionParser = this.AddComponent<ActionParser>();
         for (int i = 0; i < 5; i++)
         {
             zones[i] = transform.GetChild(i);
+            warning[i] = zones[i].GetChild(0).gameObject;
+            warning[i].SetActive(false);
         }
 
-        beatDelayActions = actionParser.ParseText(actionParser.ReadString("test.txt"));
+        beatDelayActions = actionParser.ParseText(actionParser.ReadString(textName + ".txt"));
         savedbeat = beatDelayActions[delayActionIndex].beatDelay;
     }
     // Update is called once per frame
     void Update()
     {
-        if (Conductor.instance.songPositionInBeats > currentbeat)
-        {
-            currentbeat++;
-        }
-
-        //UnityEngine.Debug.Log(currentbeat);
         
-        if (savedbeat < currentbeat && delayActionIndex < beatDelayActions.Length)
+        currentbeat= Conductor.instance.songPositionInBeats;
+        if(!GameObject.Find("BadassBar").GetComponent<BadassManager>().stopped) 
         {
             
-            if (beatDelayActions[delayActionIndex].GetType() == typeof(Arrow))
+            if (beatDelayActions[delayActionIndex].GetType() == typeof(Arrow) && savedbeat <= currentbeat+2)
             {
                 Arrow arrow = (Arrow) beatDelayActions[delayActionIndex];
-                spawnArrow(arrow.zone, arrow.beatstohit);
+                warning[arrow.zone-1].SetActive(true);
             }
-            if (beatDelayActions[delayActionIndex].GetType() == typeof(Text))
+
+            if (savedbeat <= currentbeat && delayActionIndex < beatDelayActions.Length)
             {
-                Text text = (Text) beatDelayActions[delayActionIndex];
-                actionText.text = text.text;
+                
+                if (beatDelayActions[delayActionIndex].GetType() == typeof(Arrow))
+                {
+                    Arrow arrow = (Arrow) beatDelayActions[delayActionIndex];
+                    spawnArrow(arrow.zone, arrow.beatstohit);
+                }
+                /*
+                if (beatDelayActions[delayActionIndex].GetType() == typeof(Text))
+                {
+                    Text text = (Text) beatDelayActions[delayActionIndex];
+                    actionText.text = text.text;
+                }
+                */
+                Arrow arrowcheck = (Arrow) beatDelayActions[delayActionIndex];
+                warning[arrowcheck.zone-1].SetActive(false);
+                delayActionIndex++;
+                
+                savedbeat += beatDelayActions[delayActionIndex].beatDelay;
+                
             }
-            delayActionIndex++;
-            
-            savedbeat += beatDelayActions[delayActionIndex].beatDelay;
-            
-        }
-        
+        } 
     }
 
     public void spawnArrow(int zone, float speed = 1.0f)
