@@ -51,7 +51,6 @@ public class ActionParser : MonoBehaviour
             string textInQuotes = GetStringInQuotes(line);
             BeatDelayAction action = new Text(text: textInQuotes, beatDelay: int.Parse(parts[1]));
             actions.Add(action);
-                
             }
         }
         return actions.ToArray();
