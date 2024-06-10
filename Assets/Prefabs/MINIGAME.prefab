@@ -2197,6 +2197,7 @@ MonoBehaviour:
   actionParser: {fileID: 0}
   textName: noproblems
   delayActionIndex: 0
+  done: 0
 --- !u!1 &1093106143526369345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,7 +2300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &824285002110628224
 Transform:
   m_ObjectHideFlags: 0
@@ -2637,6 +2638,7 @@ MonoBehaviour:
   loopPositionInBeats: 0
   firstBeatOffset: -0.6
   loopPositionInAnalog: 0
+  timer: 2
 --- !u!82 &1593792918381138929
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2648,7 +2650,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6906c7fd80edf5e4aa24ecedd91679e1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

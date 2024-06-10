@@ -90,7 +90,7 @@ public class arrowScript : MonoBehaviour
         if (collision.gameObject.tag == "barrier")
         {
             touchingbarrier = true;
-            UnityEngine.Debug.Log("touching barrier");
+            //UnityEngine.Debug.Log("touching barrier");
         }
     }
 }

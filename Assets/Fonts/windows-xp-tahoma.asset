@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: windows-xp-tahoma
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 521929769
   material: {fileID: 4332446982449162767}
-  materialHashCode: 0
+  materialHashCode: 838052457
   m_Version: 1.1.0
   m_SourceFontFileGUID: 9189990405c13d441a2b73ce5fd15e99
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 9189990405c13d441a2b73ce5fd15e99, type: 3}

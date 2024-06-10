@@ -37,6 +37,9 @@ public class Conductor : MonoBehaviour
     //The current relative position of the song within the loop measured between 0 and 1.
     public float loopPositionInAnalog;
 
+    public float timer = 2f;
+
+
     
     //Conductor instance
     public static Conductor instance;
@@ -56,30 +59,34 @@ public class Conductor : MonoBehaviour
         dspSongTime = (float)AudioSettings.dspTime;
 
         //Start the music
-        musicSource.Play();
+        
     }
     void Update() {
+        timer -= Time.deltaTime;
+        if (timer < 0) {
+            if (!musicSource.isPlaying) {
+                musicSource.Play();
+            }
+            if (GameObject.Find("BadassBar").GetComponent<BadassManager>().stopped) {
+                musicSource.Pause();
+            } 
+            else if (!musicSource.isPlaying) {
+                musicSource.UnPause();
+            }
+            //determine how many seconds since the song started
+            songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
+
+            //determine how many beats since the song started
+            songPositionInBeats = songPosition / secPerBeat;
+
+            if (songPositionInBeats >= (completedLoops + 1) * beatsPerLoop) completedLoops++;
+            
+            loopPositionInBeats = songPositionInBeats - completedLoops * beatsPerLoop;
+
+            loopPositionInAnalog = loopPositionInBeats / beatsPerLoop;
+
         
-        if (GameObject.Find("BadassBar").GetComponent<BadassManager>().stopped) {
-            musicSource.Pause();
-        } 
-        else if (!musicSource.isPlaying) {
-            musicSource.UnPause();
-        }
-        //determine how many seconds since the song started
-        songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
-
-        //determine how many beats since the song started
-        songPositionInBeats = songPosition / secPerBeat;
-
-        if (songPositionInBeats >= (completedLoops + 1) * beatsPerLoop) completedLoops++;
-        
-        loopPositionInBeats = songPositionInBeats - completedLoops * beatsPerLoop;
-
-        loopPositionInAnalog = loopPositionInBeats / beatsPerLoop;
-
-        
-    }
+}    }
 
     
 }

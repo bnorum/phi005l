@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class arrowSpawner : MonoBehaviour
 {
+    
     public GameObject arrowPrefab;
     public Transform[] zones = new Transform[5];
     public GameObject[] warning = new GameObject[5];
@@ -18,6 +19,8 @@ public class arrowSpawner : MonoBehaviour
     float currentbeat = 0;
     float savedbeat = 0;
     [SerializeField] int delayActionIndex = 0;
+    
+    public bool done = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +41,7 @@ public class arrowSpawner : MonoBehaviour
     {
         
         currentbeat= Conductor.instance.songPositionInBeats;
-        if(!GameObject.Find("BadassBar").GetComponent<BadassManager>().stopped) 
+        if(!GameObject.Find("BadassBar").GetComponent<BadassManager>().stopped && delayActionIndex < beatDelayActions.Length) 
         {
             
             if (beatDelayActions[delayActionIndex].GetType() == typeof(Arrow) && savedbeat <= currentbeat+2)
@@ -47,7 +50,7 @@ public class arrowSpawner : MonoBehaviour
                 warning[arrow.zone-1].SetActive(true);
             }
 
-            if (savedbeat <= currentbeat && delayActionIndex < beatDelayActions.Length)
+            if (savedbeat <= currentbeat)
             {
                 
                 if (beatDelayActions[delayActionIndex].GetType() == typeof(Arrow))
@@ -69,6 +72,10 @@ public class arrowSpawner : MonoBehaviour
                 savedbeat += beatDelayActions[delayActionIndex].beatDelay;
                 
             }
+        } 
+        else if (delayActionIndex >= beatDelayActions.Length)
+        {
+          done = true;
         } 
     }
 

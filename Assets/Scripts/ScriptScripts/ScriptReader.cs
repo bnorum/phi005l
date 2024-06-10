@@ -113,7 +113,7 @@ public class ScriptReader : MonoBehaviour
 
                 DecisionLine decisionLine = (DecisionLine)scriptLines[i];
                 WriteDecisionLine(decisionLine);
-
+                GameObject.Find("MinigameManager").GetComponent<MinigameManager>().startMinigame(135, "test");
                 var waitForButton = new WaitForUIButtons(decisionButton1, decisionButton2);
                 yield return waitForButton.Reset();
 
