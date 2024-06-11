@@ -15,17 +15,19 @@ public class MinigameManager : MonoBehaviour
     {
        
     }
-    public void startMinigame(float bpm, string textName) { //TODO: SET SONG 
+    public void startMinigame(float bpm, string textName) { //TODO: SET SONG
+        //SCRIPT NAME, SONG NAME ARE THE SAME
         GameObject.Find("Viewport").GetComponent<Mask>().enabled = false;
         Time.timeScale = 1;
         Transform moveToo = transform;
         moveToo.position = new Vector3(0, .45f, 0);
         minigame = Instantiate(minigamePrefab, moveToo);
         //minigame.transform.localScale = new Vector3(0, 0, 1);
-         conductor = GameObject.Find("Conductor").GetComponent<Conductor>();
+        conductor = GameObject.Find("Conductor").GetComponent<Conductor>();
         //conductor.songBpm = bpm;
         arrowSpawner = GameObject.Find("arrowSpawner").GetComponent<arrowSpawner>();
         arrowSpawner.textName = textName;
+        conductor.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Sounds/" + textName + ".mp3");
     }
     void Update() {
         if (minigame != null && GameObject.Find("arrowSpawner").GetComponent<arrowSpawner>().done) {
