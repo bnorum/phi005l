@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -35,7 +36,8 @@ public class arrowScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        damageDistance = UnityEngine.Vector3.Distance(player.transform.position, transform.position) - distanceOfPlayerToBlocker;
+        if (GameObject.Find("blockerparent") != null)
+            damageDistance = UnityEngine.Vector3.Distance(player.transform.position, transform.position) - distanceOfPlayerToBlocker;
 
         // Look at player
         UnityEngine.Vector3 direction = player.transform.position - transform.position;
@@ -62,7 +64,7 @@ public class arrowScript : MonoBehaviour
             AudioSource.volume = 1f;
             AudioSource.Play();
             Destroy(gameObject);
-            GameObject.Find("blocker").GetComponent<LookAtMouse>().StartCoroutine("onHit");
+            GameObject.Find("blocker").GetComponent<BarrierFollowMouse>().StartCoroutine("onHit");
         } else if (damageDistance < .05f && GameObject.Find("BadassBar").GetComponent<BadassManager>().hit) { //&& player.GetComponent<healthManager>().invincible) {
             Destroy(gameObject);
              AudioSource.clip = damageClip;

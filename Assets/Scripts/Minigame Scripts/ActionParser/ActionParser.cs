@@ -6,16 +6,14 @@ using UnityEngine;
 public class ActionParser : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
         
     }
+    public float bpm;
     public string ReadString(string path)
     {
         // Check if the file exists at the specified location
@@ -30,7 +28,7 @@ public class ActionParser : MonoBehaviour
         else
         {
             // Read the text from the file in the assets/resources folder
-            StreamReader reader = new StreamReader("Assets/Resources/" + path);
+            StreamReader reader = new StreamReader("Assets/Resources/GameMaps/" + path);
             string saveit = reader.ReadToEnd();
             return saveit;
         }
@@ -42,6 +40,10 @@ public class ActionParser : MonoBehaviour
         List<BeatDelayAction> actions = new List<BeatDelayAction>();
         foreach (string line in lines) {
             string[] parts = line.Split(' ');
+            if (parts[0] == "bpm") {
+                GameObject.Find("Conductor").GetComponent<Conductor>().songBpm = float.Parse(parts[1]);
+
+            }
             if (parts[0] == "a") {
                 BeatDelayAction action = new Arrow(zone: int.Parse(parts[3]), beatstohit: float.Parse(parts[2]), beatDelay: float.Parse(parts[1]));
                 actions.Add(action);

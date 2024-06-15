@@ -27,7 +27,7 @@ public class TextParser : MonoBehaviour
         else
         {
             // Read the text from the file in the assets/resources folder
-            StreamReader reader = new StreamReader("Assets/Resources/" + path);
+            StreamReader reader = new StreamReader("Assets/Resources/ScriptMaps/" + path);
             string saveit = reader.ReadToEnd();
             saveit = ReplaceDota2WithPlayerName(saveit);
             return saveit;

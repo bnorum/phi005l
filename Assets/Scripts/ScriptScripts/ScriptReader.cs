@@ -113,7 +113,6 @@ public class ScriptReader : MonoBehaviour
 
                 DecisionLine decisionLine = (DecisionLine)scriptLines[i];
                 WriteDecisionLine(decisionLine);
-                GameObject.Find("MinigameManager").GetComponent<MinigameManager>().startMinigame(135, "noproblems");
                 var waitForButton = new WaitForUIButtons(decisionButton1, decisionButton2);
                 yield return waitForButton.Reset();
 
@@ -121,11 +120,21 @@ public class ScriptReader : MonoBehaviour
                     i = findKeyIndex(scriptLines, decisionLine.JumpTo1);
                     ScriptLine playerChoice = new ScriptLine(Speaker: characterDeets.pName, Content: decisionLine.D1);
                     WriteLine(playerChoice);
+                    
+                    bool checkfirst = GameObject.Find("MinigameManager").GetComponent<MinigameManager>().startMinigame(decisionLine.JumpTo1);
+                    while (checkfirst && !GameObject.Find("arrowSpawner").GetComponent<arrowSpawner>().done) {
+                        yield return null;
+                    }
                     yield return new WaitForSeconds(playerChoice.Delay);
                 } else {
+                    
                     i = findKeyIndex(scriptLines, decisionLine.JumpTo2);
                     ScriptLine playerChoice = new ScriptLine(Speaker: characterDeets.pName, Content: decisionLine.D2);
                     WriteLine(playerChoice);
+                    GameObject.Find("MinigameManager").GetComponent<MinigameManager>().startMinigame(decisionLine.JumpTo2);
+                    while (!GameObject.Find("arrowSpawner").GetComponent<arrowSpawner>().done) {
+                        yield return null;
+                    }
                     yield return new WaitForSeconds(playerChoice.Delay);
                 }
             }

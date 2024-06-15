@@ -24,8 +24,9 @@ public class arrowSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        done = false;
+        actionParser = GetComponent<ActionParser>();
         //actionText = GameObject.Find("ActionText").GetComponent<TextMeshProUGUI>();
-        actionParser = this.AddComponent<ActionParser>();
         for (int i = 0; i < 5; i++)
         {
             zones[i] = transform.GetChild(i);
@@ -68,8 +69,7 @@ public class arrowSpawner : MonoBehaviour
                 Arrow arrowcheck = (Arrow) beatDelayActions[delayActionIndex];
                 warning[arrowcheck.zone-1].SetActive(false);
                 delayActionIndex++;
-                
-                savedbeat += beatDelayActions[delayActionIndex].beatDelay;
+                if (delayActionIndex < beatDelayActions.Length) savedbeat += beatDelayActions[delayActionIndex].beatDelay;
                 
             }
         } 

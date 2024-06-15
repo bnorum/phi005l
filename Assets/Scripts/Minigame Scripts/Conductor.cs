@@ -56,8 +56,8 @@ public class Conductor : MonoBehaviour
         secPerBeat = 60f / songBpm;
 
         //Record the time when the music starts
-        dspSongTime = (float)AudioSettings.dspTime;
-
+        dspSongTime = (float)AudioSettings.dspTime + 1.6f;
+        timer = 2f;
         //Start the music
         
     }
@@ -65,28 +65,36 @@ public class Conductor : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0) {
             if (!musicSource.isPlaying) {
+                
+                musicSource.volume = 1;
                 musicSource.Play();
             }
-            if (GameObject.Find("BadassBar").GetComponent<BadassManager>().stopped) {
-                musicSource.Pause();
-            } 
-            else if (!musicSource.isPlaying) {
-                musicSource.UnPause();
-            }
-            //determine how many seconds since the song started
-            songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
+        }  
+        //if (GameObject.Find("BadassBar").GetComponent<BadassManager>().stopped) musicSource.Pause();
+        
+        //determine how many seconds since the song started
+        songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
 
-            //determine how many beats since the song started
-            songPositionInBeats = songPosition / secPerBeat;
+        //determine how many beats since the song started
+        songPositionInBeats = songPosition / secPerBeat;
 
-            if (songPositionInBeats >= (completedLoops + 1) * beatsPerLoop) completedLoops++;
-            
-            loopPositionInBeats = songPositionInBeats - completedLoops * beatsPerLoop;
+        if (songPositionInBeats >= (completedLoops + 1) * beatsPerLoop) completedLoops++;
+        
+        loopPositionInBeats = songPositionInBeats - completedLoops * beatsPerLoop;
 
-            loopPositionInAnalog = loopPositionInBeats / beatsPerLoop;
+        loopPositionInAnalog = loopPositionInBeats / beatsPerLoop;
 
         
-}    }
+          
+    }
+    public IEnumerator fadeOut() {
+        while (musicSource.volume > 0) {
+            musicSource.volume -= 0.01f;
+            yield return new WaitForSeconds(0.01f);
+        }
+        musicSource.Stop();
+
+    }
 
     
 }
