@@ -70,7 +70,7 @@ public class arrowScript : MonoBehaviour
              AudioSource.clip = damageClip;
             AudioSource.volume = 0.5f;
             AudioSource.Play();
-            GameObject.Find("BadassBar").GetComponent<BadassManager>().badass -= 2;
+            GameObject.Find("BadassBar").GetComponent<BadassManager>().badass -= 15;
             //AudioSource.Play();
         } else if (damageDistance < .05f) {
             //player.GetComponent<healthManager>().damage(1);

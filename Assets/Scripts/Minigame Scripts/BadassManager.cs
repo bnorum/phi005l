@@ -28,7 +28,7 @@ public class BadassManager : MonoBehaviour
         gameOver = GetComponent<AudioSource>();
 
     }
-
+    
     void Update ()
     {
         

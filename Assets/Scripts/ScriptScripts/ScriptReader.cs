@@ -121,6 +121,7 @@ public class ScriptReader : MonoBehaviour
                     ScriptLine playerChoice = new ScriptLine(Speaker: characterDeets.pName, Content: decisionLine.D1);
                     WriteLine(playerChoice);
                     
+                    GameObject.Find("transition").GetComponent<TransitionImage>().SickTransition();
                     bool checkfirst = GameObject.Find("MinigameManager").GetComponent<MinigameManager>().startMinigame(decisionLine.JumpTo1);
                     while (checkfirst && !GameObject.Find("arrowSpawner").GetComponent<arrowSpawner>().done) {
                         yield return null;
@@ -131,8 +132,10 @@ public class ScriptReader : MonoBehaviour
                     i = findKeyIndex(scriptLines, decisionLine.JumpTo2);
                     ScriptLine playerChoice = new ScriptLine(Speaker: characterDeets.pName, Content: decisionLine.D2);
                     WriteLine(playerChoice);
+                    
+                    GameObject.Find("transition").GetComponent<TransitionImage>().SickTransition();
                     GameObject.Find("MinigameManager").GetComponent<MinigameManager>().startMinigame(decisionLine.JumpTo2);
-                    while (!GameObject.Find("arrowSpawner").GetComponent<arrowSpawner>().done) {
+                    while (GameObject.Find("arrowSpawner") != null && !GameObject.Find("arrowSpawner").GetComponent<arrowSpawner>().done) {
                         yield return null;
                     }
                     yield return new WaitForSeconds(playerChoice.Delay);

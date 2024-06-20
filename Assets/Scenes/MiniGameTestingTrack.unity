@@ -236,6 +236,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 381884982170300644, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
+      propertyPath: bpm
+      value: 135
+      objectReference: {fileID: 0}
     - target: {fileID: 880455326756199894, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -292,6 +296,14 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 1093106143480634517, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
+      propertyPath: textName
+      value: noproblems
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593792918381138929, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6906c7fd80edf5e4aa24ecedd91679e1, type: 3}
     - target: {fileID: 1593792918381138929, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -301,6 +313,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3990434436039225065, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188308485700376172, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -331,6 +347,14 @@ PrefabInstance:
     - target: {fileID: 6755248996133951254, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408483859988757488, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
+      propertyPath: songBpm
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408483859988757488, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
+      propertyPath: firstBeatOffset
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
