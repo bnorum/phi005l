@@ -10,11 +10,13 @@ public class arrowSpawner : MonoBehaviour
 {
     
     public GameObject arrowPrefab;
+
+    public GameObject missilePrefab;
     public Transform[] zones = new Transform[5];
     public GameObject[] warning = new GameObject[5];
     public BeatDelayAction[] beatDelayActions;
     public ActionParser actionParser;
-    //public TextMeshProUGUI actionText;
+    public TextMeshProUGUI actionText;
     public string textName;
     float currentbeat = 0;
     float savedbeat = 0;
@@ -26,7 +28,8 @@ public class arrowSpawner : MonoBehaviour
     {
         done = false;
         actionParser = GetComponent<ActionParser>();
-        //actionText = GameObject.Find("ActionText").GetComponent<TextMeshProUGUI>();
+        actionText = GameObject.Find("ActionText").GetComponent<TextMeshProUGUI>();
+        actionText.text = "";
         for (int i = 0; i < 5; i++)
         {
             zones[i] = transform.GetChild(i);
@@ -58,16 +61,25 @@ public class arrowSpawner : MonoBehaviour
                 {
                     Arrow arrow = (Arrow) beatDelayActions[delayActionIndex];
                     spawnArrow(arrow.zone, arrow.beatstohit);
+                    Arrow arrowcheck = (Arrow) beatDelayActions[delayActionIndex];
+                    warning[arrowcheck.zone-1].SetActive(false);
                 }
-                /*
+                
+                if (beatDelayActions[delayActionIndex].GetType() == typeof(Missile))
+                {
+                    Missile missile = (Missile) beatDelayActions[delayActionIndex];
+                    spawnMissile(missile.zone, missile.beatstohit, missile.bounces);
+                    Missile arrowcheck = (Missile) beatDelayActions[delayActionIndex];
+                    warning[arrowcheck.zone-1].SetActive(false);
+                }
+
                 if (beatDelayActions[delayActionIndex].GetType() == typeof(Text))
                 {
                     Text text = (Text) beatDelayActions[delayActionIndex];
                     actionText.text = text.text;
                 }
-                */
-                Arrow arrowcheck = (Arrow) beatDelayActions[delayActionIndex];
-                warning[arrowcheck.zone-1].SetActive(false);
+                
+                
                 delayActionIndex++;
                 if (delayActionIndex < beatDelayActions.Length) savedbeat += beatDelayActions[delayActionIndex].beatDelay;
                 
@@ -84,6 +96,14 @@ public class arrowSpawner : MonoBehaviour
         GameObject arrow = Instantiate(arrowPrefab, zones[zone-1].transform.position, Quaternion.identity);
         arrow.GetComponent<arrowScript>().zone = zone-1;
         arrow.GetComponent<arrowScript>().beatstohit = speed;
+    }
+    
+    public void spawnMissile(int zone, float speed = 1.0f, int bounces = 1)
+    {
+        GameObject arrow = Instantiate(missilePrefab, zones[zone-1].transform.position, Quaternion.identity);
+        arrow.GetComponent<missileScript>().zone = zone-1;
+        arrow.GetComponent<missileScript>().beatstohit = speed;
+        arrow.GetComponent<missileScript>().bouncesRemaining = bounces;
     }
     
 }

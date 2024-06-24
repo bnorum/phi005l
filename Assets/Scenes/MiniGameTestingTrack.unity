@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1093106143480634517, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: textName
-      value: noproblems
+      value: test
       objectReference: {fileID: 0}
     - target: {fileID: 1593792918381138929, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: m_audioClip
@@ -343,6 +343,10 @@ PrefabInstance:
     - target: {fileID: 5513384701157998842, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.329
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668320689352525112, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6755248996133951254, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: m_IsActive

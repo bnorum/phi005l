@@ -54,6 +54,16 @@ public class ActionParser : MonoBehaviour
             BeatDelayAction action = new Text(text: textInQuotes, beatDelay: int.Parse(parts[1]));
             actions.Add(action);
             }
+            if (parts[0] == "m") {
+                
+            BeatDelayAction action = new Missile(zone: int.Parse(parts[4]), beatstohit: float.Parse(parts[2]), bounces: int.Parse(parts[3]), beatDelay: float.Parse(parts[1]));
+            actions.Add(action);
+            }
+            if (parts[0] == "l") {
+                
+            BeatDelayAction action = new Laser(zone: int.Parse(parts[2]), warningduration: 3, beatDelay: float.Parse(parts[1]));
+            actions.Add(action);
+            }
         }
         return actions.ToArray();
     }

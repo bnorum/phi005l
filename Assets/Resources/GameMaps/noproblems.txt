@@ -1,6 +1,6 @@
 bpm 135
 //go get what you want
-a 52.176 1 1
+m 52.176 1 1 1
 a 0.5 1 1
 a 0.5 1 2
 a 0.5 1 3
