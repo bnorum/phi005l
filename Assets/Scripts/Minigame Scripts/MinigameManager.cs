@@ -17,10 +17,12 @@ public class MinigameManager : MonoBehaviour
     }
     
     void Update() {
-        if (minigame != null && GameObject.Find("arrowSpawner").GetComponent<arrowSpawner>().done && !minigameLeaving) {
+        if ((minigame != null && GameObject.Find("arrowSpawner").GetComponent<arrowSpawner>().done) || (GameObject.Find("BadassBar") != null && GameObject.Find("BadassBar").GetComponent<BadassManager>().badass <= 0) && !minigameLeaving) {
             Invoke("endMinigame", 2f);
             minigameLeaving = true;
         }
+
+
 
         
     }
@@ -53,6 +55,7 @@ public class MinigameManager : MonoBehaviour
         StartCoroutine(scaleMinigame(false));
         GameObject.Find("Viewport").GetComponent<Mask>().enabled = true;
     }
+
 
     public bool ifMinigameExists(string name) {
         string audioPath = "Sounds/" + name;

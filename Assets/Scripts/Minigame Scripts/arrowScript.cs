@@ -40,7 +40,10 @@ public class arrowScript : MonoBehaviour
             damageDistance = UnityEngine.Vector3.Distance(player.transform.position, transform.position) - distanceOfPlayerToBlocker;
 
         // Look at player
-        UnityEngine.Vector3 direction = player.transform.position - transform.position;
+        UnityEngine.Vector3 direction = UnityEngine.Vector3.zero;
+        if (player != null) {
+            direction = player.transform.position - transform.position;
+        }
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         if (!GameObject.Find("BadassBar").GetComponent<BadassManager>().stopped)
