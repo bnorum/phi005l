@@ -23,10 +23,11 @@ public class missileScript : MonoBehaviour
     public int bouncesRemaining;
     public bool bouncing = false;
     bool bounced = false;
-    public float bouncetime = .1f;
+    public float bouncetime;
     // Start is called before the first frame update
     void Start()
     {
+        bouncetime = .23f;
         aimAt = GameObject.Find("aimAt");
         player = GameObject.Find("player");
         blocker = GameObject.Find("blocker");
@@ -67,7 +68,7 @@ public class missileScript : MonoBehaviour
                     transform.position += (.1f) * transform.up;
                 }
 
-                transform.position += initialDistanceToPlayer * transform.up * Time.deltaTime/ (beatstohit*Conductor.instance.secPerBeat);
+                transform.position +=  initialDistanceToPlayer * transform.up * Time.deltaTime/ (beatstohit*Conductor.instance.secPerBeat);
                 
             }
         }

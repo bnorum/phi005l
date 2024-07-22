@@ -1,0 +1,59 @@
+//characters
+// {"P", "dota2"},
+// {"m", "mitchell.ae86"},
+// {"z", "Zanzibar"},
+// {"t", "TOTALDESTRUCTION10000"},
+// {"j", "Josh"},
+// {"p", "pioneer"}
+
+
+
+title "chapter 0"
+title "the test"
+
+d 3 "any way about the controls"
+
+d 3 "in the top right of the screen you can find some buttons"
+d 4 "the 2 arrows is to speed up your annoying new friends"
+d 4 "the arrow into the thing is to save the game"
+d 4 "i assume you can guess at what the giant red x does"
+d 2 "it closes the game but i was too lazy to make a confirm button so it immediately closes the game"
+d 2 "dont forget to save before that"
+d 5 "also: this window is scrollable and draggable,  so lets try it out"
+d 2 "im gonna scream scroll up until you can see this"
+d 0.1 "GRAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 0.1 "AAA"
+d 3 "AAA"
+d 3 "pretty cool right"
+ddd d ctrl2 wrongway "Got it down?" | Yes | Extra Yes
+
+key "ctrl2"
+d 2 "one more thing"
+d 2 "I recommend you listen to music while playing"
+d 3 "im no composer. listen to parliament or the dramatics or aphex twin or something idk"
+d 5 "but thats it lemme get you into the chat now. bye bye"
+skip "startof1"
+
+key "wrong way"
+d 2 "seems like you got it down :D"
+skip "startof1"
+
+key "startof1"
+d 3 "thank you for testing my game you may now close it"

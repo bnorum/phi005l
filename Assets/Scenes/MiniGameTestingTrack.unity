@@ -238,7 +238,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 381884982170300644, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: bpm
-      value: 135
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 880455326756199894, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: m_IsActive
@@ -298,12 +298,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1093106143480634517, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: textName
-      value: test
+      value: palmtree
       objectReference: {fileID: 0}
     - target: {fileID: 1593792918381138929, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 6906c7fd80edf5e4aa24ecedd91679e1, type: 3}
+      objectReference: {fileID: 8300000, guid: 49f4a0c5c666b644db36108937a4ef6a, type: 3}
     - target: {fileID: 1593792918381138929, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -354,11 +354,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7408483859988757488, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: songBpm
-      value: 135
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 7408483859988757488, guid: 7f76afd41bf5dd0498dba160b86276a2, type: 3}
       propertyPath: firstBeatOffset
-      value: 0.2
+      value: -0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -41,8 +41,8 @@ public class MinigameManager : MonoBehaviour
             conductor.songBpm = GameObject.Find("arrowSpawner").GetComponent<ActionParser>().bpm;
             arrowSpawner = GameObject.Find("arrowSpawner").GetComponent<arrowSpawner>();
             arrowSpawner.textName = textName;
-            string audioPath = "Assets/Resources/Sounds/" + textName + ".mp3";
-            AudioClip audioClip = UnityEditor.AssetDatabase.LoadAssetAtPath<AudioClip>(audioPath);
+            string audioPath = "Sounds/" + textName;
+            AudioClip audioClip =  Resources.Load<AudioClip>(audioPath);
             conductor.GetComponent<AudioSource>().clip = audioClip;
             return true;
         }
@@ -55,8 +55,9 @@ public class MinigameManager : MonoBehaviour
     }
 
     public bool ifMinigameExists(string name) {
-        return UnityEditor.AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Resources/Sounds/" + name + ".mp3") != null && UnityEditor.AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Resources/GameMaps/" + name + ".txt") != null;
-        
+        string audioPath = "Sounds/" + name;
+        string textPath = "GameMaps/" + name;
+        return Resources.Load<AudioClip>(audioPath) != null && Resources.Load<TextAsset>(textPath) != null;
     }
 
     public void showBlocker() {
